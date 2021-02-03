@@ -30,7 +30,7 @@ public class Rocket {
         double y = (yVelocity * time) - (0.5 * GRAVITY * time * time);
         return y;
     }
-
+//change
     /**
      *
      * @return the time in seconds that the rocket lands

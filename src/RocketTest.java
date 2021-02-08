@@ -38,6 +38,6 @@ public class RocketTest {
         //then
         Assert.assertEquals(8.31, timeToLand, 0.01);
     }
-    
+
 
 }

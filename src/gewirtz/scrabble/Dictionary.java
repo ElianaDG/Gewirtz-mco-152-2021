@@ -13,7 +13,7 @@ public class Dictionary {
      * @param filepath
      * creates an ArrayList of the words in the dictionary file
      */
-    public static void createWordList(String filepath)
+    public void createWordList(String filepath)
     {
         try{
             Scanner readDictionary = new Scanner(new File(filepath));
@@ -43,7 +43,7 @@ public class Dictionary {
      * @param userInput
      * @return boolean value if word is in dictionary
      */
-    public static boolean isInDictionary(String userInput)
+    public boolean isInDictionary(String userInput)
     {
         boolean inDictionary = false;
         if (DICTIONARY.contains(userInput.toUpperCase()))

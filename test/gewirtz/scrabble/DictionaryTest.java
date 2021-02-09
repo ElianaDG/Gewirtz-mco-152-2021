@@ -12,17 +12,18 @@ public class DictionaryTest {
     public void isInDictionary()
     {
         //given
-        Dictionary.createWordList("dictionary.txt");
+        Dictionary dictionary = new Dictionary();
+        dictionary.createWordList("dictionary.txt");
 
 
         //when
-        boolean wordTest = Dictionary.isInDictionary("word");
+        boolean wordTest = dictionary.isInDictionary("word");
 
         //then
         Assert.assertTrue(wordTest);
 
         //when
-        wordTest = Dictionary.isInDictionary("dergtw");
+        wordTest = dictionary.isInDictionary("dergtw");
 
         //then
         Assert.assertFalse(wordTest);

@@ -3,7 +3,7 @@ package gewirtz.physics;
 
 public class Rocket {
 
-    final double GRAVITY = 9.8;
+    private static final double GRAVITY = 9.8;
     private final double velocity;
     private final double angle;
 

@@ -5,8 +5,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Dictionary.createWordList("dictionary.txt");
-        Dictionary.isInDictionary("naacp");
+        Dictionary dictionary = new Dictionary();
+        dictionary.createWordList("dictionary.txt");
+        dictionary.isInDictionary("naacp");
 
     }
 

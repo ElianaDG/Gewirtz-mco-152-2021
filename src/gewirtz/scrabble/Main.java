@@ -1,3 +1,5 @@
+package gewirtz.scrabble;
+
 public class Main {
 
 

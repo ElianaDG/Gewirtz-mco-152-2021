@@ -1,3 +1,6 @@
+package gewirtz.physics;
+
+
 public class Rocket {
 
     final double GRAVITY = 9.8;

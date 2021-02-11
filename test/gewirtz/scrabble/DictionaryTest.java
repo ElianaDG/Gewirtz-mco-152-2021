@@ -3,8 +3,6 @@ package gewirtz.scrabble;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 public class DictionaryTest {
 
 
@@ -13,7 +11,7 @@ public class DictionaryTest {
     {
         //given
         Dictionary dictionary = new Dictionary();
-        dictionary.createWordList("dictionary.txt");
+        dictionary.createWordList("C:\\Users\\elian\\IdeaProjects\\Gewirtz-mcon152-2021\\src\\gewirtz\\scrabble\\dictionary.txt");
 
 
         //when

@@ -9,6 +9,11 @@ public class Dictionary {
 
     public static ArrayList<String> DICTIONARY = new ArrayList<String>();
 
+    public Dictionary()
+    {
+
+    }
+
     /**
      * @param filepath
      * creates an ArrayList of the words in the dictionary file
@@ -35,18 +40,17 @@ public class Dictionary {
         } catch (FileNotFoundException exception) {
             exception.getMessage();
         }
-
     }
 
     /**
      *
-     * @param userInput
+     * @param word to search for
      * @return boolean value if word is in dictionary
      */
-    public boolean isInDictionary(String userInput)
+    public boolean isInDictionary(String word)
     {
         boolean inDictionary = false;
-        if (DICTIONARY.contains(userInput.toUpperCase()))
+        if (DICTIONARY.contains(word.toUpperCase()))
         {
             inDictionary = true;
             System.out.println("true");

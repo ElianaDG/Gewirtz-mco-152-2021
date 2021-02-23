@@ -17,8 +17,7 @@ public class DictionaryController {
     {
         String word = searchField.getText();
 
-        Dictionary dictionary = new Dictionary();
-        dictionary.createWordList("C:\\Users\\elian\\IdeaProjects\\Gewirtz-mcon152-2021\\src\\gewirtz\\scrabble\\dictionary.txt");
+        Dictionary dictionary = new Dictionary("dictionary.txt");
         boolean result = dictionary.isInDictionary(word);
         if(result)
         {

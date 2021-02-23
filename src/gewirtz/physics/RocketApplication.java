@@ -13,7 +13,7 @@ public class RocketApplication extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("rocket_application.fxml"));
 
-        Scene scene = new Scene(root, 300, 275);
+        Scene scene = new Scene(root, 800, 800);
 
         stage.setTitle("Rocket Calculator");
         stage.setScene(scene);

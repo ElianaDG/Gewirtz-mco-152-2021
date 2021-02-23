@@ -7,23 +7,29 @@ public class DictionaryTest {
 
 
     @Test
-    public void isInDictionary()
+    public void testInvalidWord()
     {
         //given
-        Dictionary dictionary = new Dictionary();
-        dictionary.createWordList("C:\\Users\\elian\\IdeaProjects\\Gewirtz-mcon152-2021\\src\\gewirtz\\scrabble\\dictionary.txt");
-
+        Dictionary dictionary = new Dictionary("dictionary.txt");
 
         //when
-        boolean wordTest = dictionary.isInDictionary("word");
-
-        //then
-        Assert.assertTrue(wordTest);
-
-        //when
-        wordTest = dictionary.isInDictionary("dergtw");
+        boolean wordTest = dictionary.isInDictionary("dergtw");
 
         //then
         Assert.assertFalse(wordTest);
     }
+
+
+    @Test
+    public void testValidWord() {
+        //given
+        Dictionary dictionary = new Dictionary("dictionary.txt");
+
+        //when
+        boolean wordTest = dictionary.isInDictionary("wording");
+
+        //then
+        Assert.assertTrue(wordTest);
+    }
+
 }

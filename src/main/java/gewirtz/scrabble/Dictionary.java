@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Dictionary {
 
     private final ArrayList<String> dictionary = new ArrayList<String>();
+    private final ArrayList<String> definitions = new ArrayList<String>();
 
     public Dictionary(String filepath)
     {
@@ -16,23 +17,33 @@ public class Dictionary {
             while(readDictionary.hasNextLine())
             {
                 String line = readDictionary.nextLine();
-                String validWord;
                 if(!line.contains(" "))
                 {
-                    validWord = line;
+                    dictionary.add(line);
+                    definitions.add("");
                 }
                 else
                 {
-                    validWord = line.substring(0,line.indexOf(" "));
+                    dictionary.add(line.substring(0,line.indexOf(" ")));
+                    definitions.add(line.substring(line.indexOf(" ") + 1));
                 }
 
-                dictionary.add(validWord.toUpperCase());
             }
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
         }
     }
 
+    public String getDefinition(String word)
+    {
+        if(!dictionary.contains(word.toUpperCase()))
+        {
+            return "";
+        }
+        else {
+            return definitions.get(dictionary.indexOf(word.toUpperCase()));
+        }
+    }
 
 
     /**

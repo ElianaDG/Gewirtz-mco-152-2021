@@ -3,31 +3,24 @@ package gewirtz.scrabble;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Dictionary {
 
-    private final ArrayList<String> dictionary = new ArrayList<String>();
-    private final ArrayList<String> definitions = new ArrayList<String>();
+    private final Map<String, String> wordsToDefinitions = new HashMap<>();
 
     public Dictionary(String filepath)
     {
         try{
             Scanner readDictionary = new Scanner(new File(filepath));
-            while(readDictionary.hasNextLine())
+            while(readDictionary.hasNext())
             {
-                String line = readDictionary.nextLine();
-                if(!line.contains(" "))
-                {
-                    dictionary.add(line);
-                    definitions.add("");
-                }
-                else
-                {
-                    dictionary.add(line.substring(0,line.indexOf(" ")));
-                    definitions.add(line.substring(line.indexOf(" ") + 1));
-                }
-
+                wordsToDefinitions.put(
+                        readDictionary.next(),
+                        readDictionary.nextLine().trim()
+                );
             }
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
@@ -36,13 +29,8 @@ public class Dictionary {
 
     public String getDefinition(String word)
     {
-        if(!dictionary.contains(word.toUpperCase()))
-        {
-            return "";
-        }
-        else {
-            return definitions.get(dictionary.indexOf(word.toUpperCase()));
-        }
+        String definition = wordsToDefinitions.get(word.toUpperCase());
+        return definition == null ? "" : definition;
     }
 
 
@@ -53,7 +41,7 @@ public class Dictionary {
      */
     public boolean isInDictionary(String word)
     {
-        return dictionary.contains(word.toUpperCase());
+        return wordsToDefinitions.containsKey(word.toUpperCase());
     }
 
 

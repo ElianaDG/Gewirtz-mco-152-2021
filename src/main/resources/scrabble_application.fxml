@@ -37,16 +37,16 @@
            GridPane.columnIndex="6" GridPane.rowIndex="0"/>
 
     <Button text="New Game"  onAction = "#startNewGame"
-            GridPane.columnIndex = "4" GridPane.rowIndex = "1"/>
+            GridPane.columnIndex = "7" GridPane.rowIndex = "1"/>
 
     <Button text="Clear"  onAction = "#clearTiles"
-            GridPane.columnIndex = "1" GridPane.rowIndex = "1"/>
+            GridPane.columnIndex = "8" GridPane.rowIndex = "1"/>
 
     <Button text="Submit"  onAction = "#submitWord"
-            GridPane.columnIndex = "2" GridPane.rowIndex = "1"/>
+            GridPane.columnIndex = "9" GridPane.rowIndex = "1"/>
 
     <Button text="Number of Points"  onAction = "#calculatePoints"
-            GridPane.columnIndex = "3" GridPane.rowIndex = "1"/>
+            GridPane.columnIndex = "10" GridPane.rowIndex = "1"/>
 
     <Label fx:id = "invalidWord"
            GridPane.columnIndex="4" GridPane.rowIndex="2"/>

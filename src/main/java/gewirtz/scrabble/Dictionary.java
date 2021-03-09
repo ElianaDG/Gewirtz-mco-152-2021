@@ -27,6 +27,11 @@ public class Dictionary {
         }
     }
 
+    /**
+     *
+     * @param word that is to be defined
+     * @return String value of the word definition
+     */
     public String getDefinition(String word)
     {
         String definition = wordsToDefinitions.get(word.toUpperCase());

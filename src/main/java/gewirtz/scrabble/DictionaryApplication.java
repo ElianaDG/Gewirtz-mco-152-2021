@@ -11,7 +11,7 @@ public class DictionaryApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("dictionary_application.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../../resources/dictionary_application.fxml"));
 
         Scene scene = new Scene(root, 300, 275);
 

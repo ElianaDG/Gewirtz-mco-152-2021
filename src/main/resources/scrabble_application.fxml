@@ -9,24 +9,31 @@
     <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
 
     <Label fx:id = "letterOne"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="0" GridPane.rowIndex="0"/>
 
     <Label fx:id = "letterTwo"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
     <Label fx:id = "letterThree"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="2" GridPane.rowIndex="0"/>
 
     <Label fx:id = "letterFour"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="3" GridPane.rowIndex="0"/>
 
     <Label fx:id = "letterFive"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="4" GridPane.rowIndex="0"/>
 
     <Label fx:id = "letterSix"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="5" GridPane.rowIndex="0"/>
 
     <Label fx:id = "letterSeven"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="6" GridPane.rowIndex="0"/>
 
     <Button text="New Game"  onAction = "#startNewGame"
@@ -48,24 +55,31 @@
            GridPane.columnIndex="3" GridPane.rowIndex="2"/>
 
     <Label fx:id = "tileOne"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="0" GridPane.rowIndex="4"/>
 
     <Label fx:id = "tileTwo"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="1" GridPane.rowIndex="4"/>
 
     <Label fx:id = "tileThree"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="2" GridPane.rowIndex="4"/>
 
     <Label fx:id = "tileFour"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="3" GridPane.rowIndex="4"/>
 
     <Label fx:id = "tileFive"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="4" GridPane.rowIndex="4"/>
 
     <Label fx:id = "tileSix"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="5" GridPane.rowIndex="4"/>
 
     <Label fx:id = "tileSeven"
+           style="-fx-border: 1; -fx-border-color:black; -fx-border-style: solid; -fx-padding: 8 8 8 8; -fx-background-color: white"
            GridPane.columnIndex="6" GridPane.rowIndex="4"/>
 
 </GridPane>

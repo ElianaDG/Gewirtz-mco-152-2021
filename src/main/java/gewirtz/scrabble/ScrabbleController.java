@@ -12,7 +12,7 @@ public class ScrabbleController {
     @FXML
     Label tileOne, tileTwo, tileThree, tileFour, tileFive, tileSix, tileSeven,
             letterOne, letterTwo, letterThree, letterFour, letterFive, letterSix,
-            letterSeven, invalidWord, numberOfPoints;
+            letterSeven, numberOfPoints;
 
     public void clearTiles(ActionEvent actionEvent) {
         letterOne.setText("");
@@ -60,7 +60,7 @@ public class ScrabbleController {
         }
         else
         {
-            invalidWord.setText("Invalid Word");
+
         }
     }
 

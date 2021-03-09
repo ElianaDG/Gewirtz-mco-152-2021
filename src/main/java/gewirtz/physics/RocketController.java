@@ -9,20 +9,11 @@ public class RocketController {
 
     public RocketCanvas rocketCanvas;
     @FXML
-    TextField velocityField;
+    TextField velocityField, angleField, secondsField;
 
     @FXML
-    TextField angleField;
+    Label locationLabel, flightTimeLabel;
 
-    @FXML
-    TextField secondsField;
-
-    @FXML
-    Label locationLabel;
-
-
-    @FXML
-    Label flightTimeLabel;
 
     public void calculateRocket(ActionEvent actionEvent) {
 

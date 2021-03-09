@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<GridPane fx:controller="gewirtz.scrabble.ScrabbleController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+
+    <Label fx:id = "letterOne"
+           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+    <Label fx:id = "letterTwo"
+           GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+    <Label fx:id = "letterThree"
+           GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+
+    <Label fx:id = "letterFour"
+           GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+    <Label fx:id = "letterFive"
+           GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+
+    <Label fx:id = "letterSix"
+           GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+
+    <Label fx:id = "letterSeven"
+           GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+
+    <Button text="New Game"  onAction = "#startNewGame"
+            GridPane.columnIndex = "4" GridPane.rowIndex = "1"/>
+
+    <Button text="Clear"  onAction = "#clearTiles"
+            GridPane.columnIndex = "1" GridPane.rowIndex = "1"/>
+
+    <Button text="Submit"  onAction = "#submitWord"
+            GridPane.columnIndex = "2" GridPane.rowIndex = "1"/>
+
+    <Button text="Number of Points"  onAction = "#calculatePoints"
+            GridPane.columnIndex = "3" GridPane.rowIndex = "1"/>
+
+    <Label fx:id = "invalidWord"
+           GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+
+    <Label fx:id = "numberOfPoints"
+           GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+
+    <Label fx:id = "tileOne"
+           GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+
+    <Label fx:id = "tileTwo"
+           GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+    <Label fx:id = "tileThree"
+           GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+
+    <Label fx:id = "tileFour"
+           GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+
+    <Label fx:id = "tileFive"
+           GridPane.columnIndex="4" GridPane.rowIndex="4"/>
+
+    <Label fx:id = "tileSix"
+           GridPane.columnIndex="5" GridPane.rowIndex="4"/>
+
+    <Label fx:id = "tileSeven"
+           GridPane.columnIndex="6" GridPane.rowIndex="4"/>
+
+</GridPane>

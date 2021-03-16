@@ -1,73 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.geometry.Insets?>
-<GridPane fx:controller="gewirtz.scrabble.ScrabbleController"
-          stylesheets="@dictionary.css"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="gewirtz.scrabble.ScrabbleController"
+          stylesheets="scrabble_application.css"
+          prefHeight="400.0" prefWidth="600.0">
 
-    <Label fx:id = "lettersLabel" text = "Word:"
-           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Label fx:id ="answerLabel1" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <Label fx:id ="answerLabel2" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+    <Label fx:id ="answerLabel3" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+    <Label fx:id ="answerLabel4" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+    <Label fx:id ="answerLabel5" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+    <Label fx:id ="answerLabel6" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+    <Label fx:id ="answerLabel7" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="7" GridPane.rowIndex="0"/>
 
-    <Label fx:id = "tilesLabel" text = "Your Tiles:"
-           GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <Button fx:id="clearButton" onAction="#onClear" text="clear" GridPane.columnIndex="8" GridPane.rowIndex="2"/>
+    <Button fx:id="submitButton" onAction="#onSubmit" text="submit" GridPane.columnIndex="8" GridPane.rowIndex="3"/>
+    <Label fx:id="pointsLabel" styleClass="points" text="#points" GridPane.columnIndex="8" GridPane.rowIndex="4"/>
 
-    <Label fx:id = "letterOne"
-           GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-           GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+    <Label fx:id = "invalidWord" GridPane.columnIndex="9" GridPane.rowIndex="4"/>
 
-    <Label fx:id = "letterThree"
-           GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+    <Label fx:id ="letterLabel1" onMouseClicked="#onLetterClicked" styleClass="bottomClickable" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+    <Label fx:id ="letterLabel2" onMouseClicked="#onLetterClicked" styleClass="bottomClickable" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+    <Label fx:id ="letterLabel3" onMouseClicked="#onLetterClicked" styleClass="bottomClickable" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+    <Label fx:id ="letterLabel4" onMouseClicked="#onLetterClicked" styleClass="bottomClickable" GridPane.columnIndex="4" GridPane.rowIndex="5"/>
+    <Label fx:id ="letterLabel5" onMouseClicked="#onLetterClicked" styleClass="bottomClickable" GridPane.columnIndex="5" GridPane.rowIndex="5"/>
+    <Label fx:id ="letterLabel6" onMouseClicked="#onLetterClicked" styleClass="bottomClickable" GridPane.columnIndex="6" GridPane.rowIndex="5"/>
+    <Label fx:id ="letterLabel7" onMouseClicked="#onLetterClicked" styleClass="bottomClickable" GridPane.columnIndex="7" GridPane.rowIndex="5"/>
 
-    <Label fx:id = "letterFour"
-           GridPane.columnIndex="4" GridPane.rowIndex="0"/>
-
-    <Label fx:id = "letterFive"
-           GridPane.columnIndex="5" GridPane.rowIndex="0"/>
-
-    <Label fx:id = "letterSix"
-           GridPane.columnIndex="6" GridPane.rowIndex="0"/>
-
-    <Label fx:id = "letterSeven"
-           GridPane.columnIndex="7" GridPane.rowIndex="0"/>
-
-    <Button text="New Game"  onAction = "#startNewGame"
-            GridPane.columnIndex = "8" GridPane.rowIndex = "1"/>
-
-    <Button text="Clear"  onAction = "#clearTiles"
-            GridPane.columnIndex = "8" GridPane.rowIndex = "2"/>
-
-    <Button text="Submit"  onAction = "#submitWord"
-            GridPane.columnIndex = "8" GridPane.rowIndex = "3"/>
-
-    <Button text="Number of Points"  onAction = "#calculatePoints"
-            GridPane.columnIndex = "8" GridPane.rowIndex = "4"/>
-
-    <Label fx:id = "numberOfPoints"
-           GridPane.columnIndex="9" GridPane.rowIndex="4"/>
-
-    <Label fx:id = "tileOne"
-           GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-
-    <Label fx:id = "tileTwo"
-           GridPane.columnIndex="2" GridPane.rowIndex="5"/>
-
-    <Label fx:id = "tileThree"
-           GridPane.columnIndex="3" GridPane.rowIndex="5"/>
-
-    <Label fx:id = "tileFour"
-           GridPane.columnIndex="4" GridPane.rowIndex="5"/>
-
-    <Label fx:id = "tileFive"
-           GridPane.columnIndex="5" GridPane.rowIndex="5"/>
-
-    <Label fx:id = "tileSix"
-           GridPane.columnIndex="6" GridPane.rowIndex="5"/>
-
-    <Label fx:id = "tileSeven"
-           GridPane.columnIndex="7" GridPane.rowIndex="5"/>
+    <fx:define>
+        <ArrayList fx:id="answerLabels">
+            <fx:reference source="answerLabel1"/>
+            <fx:reference source="answerLabel2"/>
+            <fx:reference source="answerLabel3"/>
+            <fx:reference source="answerLabel4"/>
+            <fx:reference source="answerLabel5"/>
+            <fx:reference source="answerLabel6"/>
+            <fx:reference source="answerLabel7"/>
+        </ArrayList>
+        <ArrayList fx:id="letterLabels">
+            <fx:reference source="letterLabel1"/>
+            <fx:reference source="letterLabel2"/>
+            <fx:reference source="letterLabel3"/>
+            <fx:reference source="letterLabel4"/>
+            <fx:reference source="letterLabel5"/>
+            <fx:reference source="letterLabel6"/>
+            <fx:reference source="letterLabel7"/>
+        </ArrayList>
+    </fx:define>
 
 </GridPane>

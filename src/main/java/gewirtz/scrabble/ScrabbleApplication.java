@@ -11,9 +11,9 @@ public class ScrabbleApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("../../../resources/scrabble_application.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/scrabble_application.fxml"));
 
-        Scene scene = new Scene(root, 300, 275);
+        Scene scene = new Scene(root, 800, 400);
 
         stage.setTitle("Scrabble");
         stage.setScene(scene);

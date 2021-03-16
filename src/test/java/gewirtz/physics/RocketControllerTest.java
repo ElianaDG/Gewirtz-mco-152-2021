@@ -31,6 +31,7 @@ public class RocketControllerTest {
 
         controller.locationLabel = mock(Label.class);
         controller.rocketCanvas = mock(RocketCanvas.class);
+        controller.flightTimeLabel = mock(Label.class);
 
         ActionEvent event = mock(ActionEvent.class);
 
@@ -39,7 +40,7 @@ public class RocketControllerTest {
         controller.calculateRocket(null);
 
         //then
-        verify(controller.locationLabel).setText("Rocket location: (174.48, 78.07) ");
+        verify(controller.locationLabel).setText("Location: 174.48, 78.07");
         verify(controller.rocketCanvas).draw(any(Rocket.class));
 
     }

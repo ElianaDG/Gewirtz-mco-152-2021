@@ -4,76 +4,116 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import java.util.List;
+
 public class ScrabbleController {
 
+
     private int points = 0;
-    //private ArrayList<String> tiles = ["A"];
 
     @FXML
-    Label tileOne, tileTwo, tileThree, tileFour, tileFive, tileSix, tileSeven,
-            letterOne, letterTwo, letterThree, letterFour, letterFive, letterSix,
-            letterSeven, numberOfPoints;
+    List<Label> answerLabels;
 
-    public void clearTiles(ActionEvent actionEvent) {
-        letterOne.setText("");
-        letterTwo.setText("");
-        letterThree.setText("");
-        letterFour.setText("");
-        letterFive.setText("");
-        letterSix.setText("");
-        letterSeven.setText("");
+    @FXML
+    List<Label> letterLabels;
+
+    @FXML
+    Label invalidWord, pointsLabel;
+
+    private LetterBag letterBag = new LetterBag();
+
+    private Dictionary dictionary;
+
+    public ScrabbleController() {
+        dictionary = new Dictionary("dictionary.txt");
     }
 
-    public void submitWord(ActionEvent actionEvent) {
-
-        String word = letterOne.getText() + letterTwo.getText() + letterThree.getText()
-                + letterFour.getText() + letterFive.getText() + letterSix.getText() + letterSeven.getText();
-
-        Dictionary dictionary = new Dictionary("dictionary.txt");
-
-        if(dictionary.isInDictionary(word) && word.length() > 1)
-        {
-            if(word.length() == 2)
-            {
-                points += 1;
-            }
-            else if(word.length() == 3)
-            {
-                points += 3;
-            }
-            else if(word.length() == 4)
-            {
-                points += 5;
-            }
-            else if(word.length() == 5)
-            {
-                points += 7;
-            }
-            else if(word.length() == 6)
-            {
-                points += 11;
-            }
-            else if(word.length() == 7)
-            {
-                points += 13;
-            }
-        }
-        else
-        {
-
+    @FXML
+    public void initialize(){
+        for(Label label : letterLabels){
+            label.setText(letterBag.nextLetter());
         }
     }
 
-    public void calculatePoints(ActionEvent actionEvent) {
 
-        numberOfPoints.setText("Points: " + points);
+    public void onAnswerClicked(javafx.scene.input.MouseEvent mouseEvent) {
+        Label label = (Label) mouseEvent.getSource();
 
+        //label.setText("");
     }
 
-    public void startNewGame(ActionEvent actionEvent) {
-        points = 0;
-        //remove a letter at random from the list and assign it to a tile
-        //how and where in the code do u click on the tile labels to add them to the word?
+    public void onClear(ActionEvent actionEvent) {
+        returnTiles();
+    }
 
+    private void returnTiles() {
+        for(Label answer : answerLabels) {
+            for( Label letter : letterLabels){
+                if(letter.getText().equals("")){
+                    letter.setText(answer.getText());
+                    break;
+                }
+            }
+            answer.setText("");
+        }
+    }
+
+    private void clearTiles() {
+        for(Label answer : answerLabels) {
+            answer.setText("");
+        }
+    }
+
+    public void onSubmit(ActionEvent actionEvent) {
+        String word = "";
+        for(Label answer : answerLabels) {
+            word += answer.getText();
+        }
+
+        if(dictionary.isInDictionary(word)){
+            calculatePoints(word);
+            clearTiles();
+            pointsLabel.setText(String.valueOf(points));
+            for(Label letter : letterLabels){
+                if(letter.getText() == ""){
+                    letter.setText(letterBag.nextLetter());
+                }
+            }
+        }
+        else{
+            returnTiles();
+            invalidWord.setText("invalid word");
+        }
+    }
+
+    private void calculatePoints(String word) {
+
+        if(word.length() == 2){
+            points += 1;
+        } else if(word.length() == 3){
+            points += 3;
+        }else if(word.length() == 4){
+            points += 5;
+        }else if(word.length() == 5){
+            points += 7;
+        }else if(word.length() == 6){
+            points += 11;
+        }else if(word.length() == 7){
+            points += 13;
+        }else{
+            points += 0;
+        }
+    }
+
+    public void onLetterClicked(javafx.scene.input.MouseEvent mouseEvent) {
+        Label label = (Label) mouseEvent.getSource();
+        String letter = label.getText();
+        for(Label answer : answerLabels){
+            if(answer.getText().equals("")){
+                answer.setText(letter);
+                break;
+            }
+        }
+        label.setText("");
     }
 }

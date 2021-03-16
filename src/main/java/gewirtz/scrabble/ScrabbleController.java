@@ -38,8 +38,13 @@ public class ScrabbleController {
 
     public void onAnswerClicked(javafx.scene.input.MouseEvent mouseEvent) {
         Label label = (Label) mouseEvent.getSource();
-
-        //label.setText("");
+        for( Label letter : letterLabels){
+            if(letter.getText().equals("")){
+                letter.setText(label.getText());
+                label.setText("");
+                break;
+            }
+        }
     }
 
     public void onClear(ActionEvent actionEvent) {

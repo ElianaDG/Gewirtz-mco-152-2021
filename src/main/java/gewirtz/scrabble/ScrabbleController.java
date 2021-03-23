@@ -13,19 +13,22 @@ public class ScrabbleController {
 
     @FXML
     List<Label> answerLabels;
-
     @FXML
     List<Label> letterLabels;
-
     @FXML
     Label invalidWord, pointsLabel;
 
-    private LetterBag letterBag = new LetterBag();
+    private LetterBag letterBag;
 
     private Dictionary dictionary;
 
-    public ScrabbleController() {
-        dictionary = new Dictionary("dictionary.txt");
+    // dependency injection
+    //if a class depends on other objects, pass those objects in the constructor
+    public ScrabbleController(
+            Dictionary dictionary,
+            LetterBag letterBag) {
+        this.dictionary = dictionary;
+        this.letterBag = letterBag;
     }
 
     @FXML
@@ -70,17 +73,18 @@ public class ScrabbleController {
     }
 
     public void onSubmit(ActionEvent actionEvent) {
-        String word = "";
+        StringBuilder stringBuilder = new StringBuilder();
         for(Label answer : answerLabels) {
-            word += answer.getText();
+            stringBuilder.append(answer.getText());
         }
+        String word = stringBuilder.toString();
 
         if(dictionary.isInDictionary(word)){
             calculatePoints(word);
             clearTiles();
             pointsLabel.setText(String.valueOf(points));
             for(Label letter : letterLabels){
-                if(letter.getText() == ""){
+                if("".equals(letter.getText())){
                     letter.setText(letterBag.nextLetter());
                 }
             }

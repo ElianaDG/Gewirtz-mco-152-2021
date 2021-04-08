@@ -9,7 +9,7 @@ import java.util.List;
 public class ScrabbleController {
 
 
-    private int points = 0;
+    protected int points = 0;   //make it protected or nothing?
 
     @FXML
     List<Label> answerLabels;
@@ -18,9 +18,9 @@ public class ScrabbleController {
     @FXML
     Label invalidWord, pointsLabel;
 
-    private LetterBag letterBag;
+    private final LetterBag letterBag;
 
-    private Dictionary dictionary;
+    private final Dictionary dictionary;
 
     // dependency injection
     //if a class depends on other objects, pass those objects in the constructor
@@ -54,24 +54,37 @@ public class ScrabbleController {
         returnTiles();
     }
 
+    /**
+     * returns letters from AnswerLabels to any empty letterLabels
+     */
     private void returnTiles() {
         for(Label answer : answerLabels) {
-            for( Label letter : letterLabels){
-                if(letter.getText().equals("")){
-                    letter.setText(answer.getText());
-                    break;
+            String answerText = answer.getText();
+            if(!answerText.isEmpty()) {
+                for (Label letter : letterLabels) {
+                    if (letter.getText().equals("")) {
+                        letter.setText(answer.getText());
+                        break;
+                    }
                 }
             }
             answer.setText("");
         }
     }
 
+    /**
+     * sets text of answerLabels to ""
+     */
     private void clearTiles() {
         for(Label answer : answerLabels) {
             answer.setText("");
         }
     }
 
+    /**
+     * checks dictionary for word made from the answerLabels
+     * @param actionEvent
+     */
     public void onSubmit(ActionEvent actionEvent) {
         StringBuilder stringBuilder = new StringBuilder();
         for(Label answer : answerLabels) {
@@ -95,6 +108,10 @@ public class ScrabbleController {
         }
     }
 
+    /**
+     * calculates the points value according to the word length
+     * @param word created with letters is evaluated for points
+     */
     private void calculatePoints(String word) {
 
         if(word.length() == 2){
@@ -107,13 +124,15 @@ public class ScrabbleController {
             points += 7;
         }else if(word.length() == 6){
             points += 11;
-        }else if(word.length() == 7){
-            points += 13;
         }else{
-            points += 0;
+            points += 13;
         }
     }
 
+    /**
+     * when a letterLabel is clicked, its letter goes to the first available answerLabel
+     * @param mouseEvent
+     */
     public void onLetterClicked(javafx.scene.input.MouseEvent mouseEvent) {
         Label label = (Label) mouseEvent.getSource();
         String letter = label.getText();

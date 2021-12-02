@@ -13,11 +13,9 @@ import java.io.PrintWriter;
 
 public class PathServlet extends HttpServlet {
 
-    private final Gson gson;
     private final Dictionary dictionary;
 
-    public PathServlet() throws IOException {
-        gson = new GsonBuilder().setPrettyPrinting().create();
+    public PathServlet() {
         dictionary = new Dictionary("dictionary.txt");
     }
 
@@ -26,14 +24,13 @@ public class PathServlet extends HttpServlet {
             HttpServletResponse response
     ) throws IOException {
         PrintWriter out = response.getWriter();
-        String json;
+        String output;
 
         if(dictionary.isInDictionary(request.getParameter("word"))){
-            String definition = dictionary.getDefinition(request.getParameter("word"));
-            json = gson.toJson(definition);
+            output = dictionary.getDefinition(request.getParameter("word"));
         } else {
-            json = gson.toJson("Invalid word.");
+            output = "Invalid word.";
         }
-        out.println(json);
+        out.println(output);
     }
 }

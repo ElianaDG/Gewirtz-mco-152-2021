@@ -1,6 +1,6 @@
 package gewirtz.scrabble;
 
-import gewirtz.scrabble.webapp.PathServlet;
+import gewirtz.scrabble.webapp.DictionaryServlet;
 import org.junit.Test;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,22 +10,24 @@ import java.io.PrintWriter;
 
 import static org.mockito.Mockito.*;
 
-public class PathServletTest {
+public class DictionaryServletTest {
 
     @Test
     public void doGet() throws IOException {
         //given
-        PathServlet servlet = new PathServlet();
+        DictionaryServlet servlet = new DictionaryServlet();
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
         PrintWriter out = mock(PrintWriter.class);
+        String expected = "one [adj]";
+
         doReturn(out).when(response).getWriter();
-        doReturn("word").when(request).getParameter("word");
+        doReturn("AE").when(request).getParameter("word");
 
         //when
         servlet.doGet(request, response);
 
         //then
-        verify(out).println(anyString());
+        verify(out).println(expected);
     }
 }

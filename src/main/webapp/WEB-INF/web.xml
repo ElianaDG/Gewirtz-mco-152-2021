@@ -10,14 +10,14 @@
 
 
     <servlet>
-        <display-name>PathServlet</display-name>
-        <servlet-name>PathServlet</servlet-name>
-        <servlet-class>gewirtz.scrabble.webapp.PathServlet</servlet-class>
+        <display-name>DictionaryServlet</display-name>
+        <servlet-name>DictionaryServlet</servlet-name>
+        <servlet-class>gewirtz.scrabble.webapp.DictionaryServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>PathServlet</servlet-name>
-        <url-pattern>/path</url-pattern>
+        <servlet-name>DictionaryServlet</servlet-name>
+        <url-pattern>/dictionary</url-pattern>
     </servlet-mapping>
 
 </web-app>

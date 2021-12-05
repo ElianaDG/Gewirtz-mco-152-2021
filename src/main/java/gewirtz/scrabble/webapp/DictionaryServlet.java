@@ -4,19 +4,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import gewirtz.scrabble.Dictionary;
+import gewirtz.scrabble.DictionaryService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
-public class PathServlet extends HttpServlet {
+public class DictionaryServlet extends HttpServlet {
 
-    private final Dictionary dictionary;
+    private final Map<String, String> dictionary;
+    private final DictionaryService service;
 
-    public PathServlet() {
-        dictionary = new Dictionary("dictionary.txt");
+    public DictionaryServlet() throws IOException {
+        service = new DictionaryService();
+        dictionary = service.dictionary();
     }
 
     public void doGet(
@@ -26,11 +28,7 @@ public class PathServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String output;
 
-        if(dictionary.isInDictionary(request.getParameter("word"))){
-            output = dictionary.getDefinition(request.getParameter("word"));
-        } else {
-            output = "Invalid word.";
-        }
+        output = dictionary.getOrDefault(request.getParameter("word"), "Invalid word.");
         out.println(output);
     }
 }

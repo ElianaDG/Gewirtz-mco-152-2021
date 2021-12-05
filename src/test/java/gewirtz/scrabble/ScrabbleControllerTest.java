@@ -65,7 +65,7 @@ public class ScrabbleControllerTest {
 
     @Test
     public void onClear_fullAnswer(){
-        //given
+        // given
         givenScrabbleController();
         doReturn("G").when(answerLabels.get(0)).getText();
         doReturn("H").when(answerLabels.get(1)).getText();
@@ -74,10 +74,10 @@ public class ScrabbleControllerTest {
         doReturn("").when(letterLabels.get(1)).getText();
         doReturn("").when(letterLabels.get(2)).getText();
 
-        //when
+        // when
         controller.onClear(mock(ActionEvent.class));
 
-        //then
+        // then
         verify(answerLabels.get(0)).getText();
         verify(answerLabels.get(0)).setText("");
         verify(answerLabels.get(1)).getText();
@@ -87,7 +87,6 @@ public class ScrabbleControllerTest {
         verify(letterLabels.get(0)).setText("G");
         verify(letterLabels.get(1)).setText("H");
         verify(letterLabels.get(2)).setText("E");
-
     }
 
     @Test

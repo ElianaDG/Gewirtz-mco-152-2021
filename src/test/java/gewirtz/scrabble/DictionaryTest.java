@@ -3,14 +3,16 @@ package gewirtz.scrabble;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
+
 public class DictionaryTest {
 
 
     @Test
-    public void testInvalidWord()
-    {
+    public void testInvalidWord() throws IOException {
         //given
-        Dictionary dictionary = new Dictionary("dictionary.txt");
+        DictionaryService service = new DictionaryService();
+        Dictionary dictionary = service.dictionary();
 
         //when
         boolean wordTest = dictionary.isInDictionary("dergtw");
@@ -21,9 +23,10 @@ public class DictionaryTest {
 
 
     @Test
-    public void testValidWord() {
+    public void testValidWord() throws IOException {
         //given
-        Dictionary dictionary = new Dictionary("dictionary.txt");
+        DictionaryService service = new DictionaryService();
+        Dictionary dictionary = service.dictionary();
 
         //when
         boolean wordTest = dictionary.isInDictionary("wording");
@@ -33,10 +36,10 @@ public class DictionaryTest {
     }
 
     @Test
-    public void testValidDefinition()
-    {
+    public void testValidDefinition() throws IOException {
         //given
-        Dictionary dictionary = new Dictionary("dictionary.txt");
+        DictionaryService service = new DictionaryService();
+        Dictionary dictionary = service.dictionary();
 
         //when
         String definitionTest = dictionary.getDefinition("liability");
@@ -46,10 +49,10 @@ public class DictionaryTest {
     }
 
     @Test
-    public void testInvalidDefinition()
-    {
+    public void testInvalidDefinition() throws IOException {
         //given
-        Dictionary dictionary = new Dictionary("dictionary.txt");
+        DictionaryService service = new DictionaryService();
+        Dictionary dictionary = service.dictionary();
 
         //when
         String definitionTest = dictionary.getDefinition("skjhgfrd");

@@ -9,11 +9,10 @@ import gewirtz.scrabble.DictionaryService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 
 public class DictionaryServlet extends HttpServlet {
 
-    private final Map<String, String> dictionary;
+    private final Dictionary dictionary;
     private final DictionaryService service;
 
     public DictionaryServlet() throws IOException {
@@ -23,7 +22,7 @@ public class DictionaryServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
-        String output = dictionary.get(request.getParameter("word"));
+        String output = dictionary.getDefinition(request.getParameter("word"));
         out.println(output);
     }
 }

@@ -3,29 +3,28 @@ package gewirtz.scrabble;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class DictionaryService {
 
     public Map<String, String> dictionary() throws IOException {
 
         Map<String, String> dictionary = new HashMap<>();
-        BufferedReader reader = null;
         try{
-            reader = new BufferedReader(new FileReader("dictionary.txt"));
-            while(reader.readLine() != null)
-            {
-                String line = reader.readLine();
-                String word = line.substring(0, line.indexOf(" "));
-                String definition = line.substring(line.indexOf(" "));
+            InputStream in = getClass().getClassLoader().getResourceAsStream("dictionary.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String entry;
+            while(reader.readLine() != null){
+                entry = reader.readLine();
+                String word = entry.substring(0, entry.indexOf(" "));
+                String definition = entry.substring(entry.indexOf(" ")).trim();
                 dictionary.put(word, definition);
             }
-        } catch (FileNotFoundException exception) {
-            exception.printStackTrace();
-        }
-        if(reader != null){
             reader.close();
+        } catch (Exception e){
+            e.printStackTrace();
         }
+
+
         return dictionary;
     }
 }

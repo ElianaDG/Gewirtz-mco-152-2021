@@ -21,14 +21,9 @@ public class DictionaryServlet extends HttpServlet {
         dictionary = service.dictionary();
     }
 
-    public void doGet(
-            HttpServletRequest request,
-            HttpServletResponse response
-    ) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
-        String output;
-
-        output = dictionary.getOrDefault(request.getParameter("word"), "Invalid word.");
+        String output = dictionary.get(request.getParameter("word"));
         out.println(output);
     }
 }

@@ -1,8 +1,9 @@
 package gewirtz.scrabble;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -11,19 +12,12 @@ public class Dictionary {
 
     private final Map<String, String> wordsToDefinitions = new HashMap<>();
 
-    public Dictionary(String filepath)
-    {
-        try{
-            Scanner readDictionary = new Scanner(new File(filepath));
-            while(readDictionary.hasNext())
-            {
-                wordsToDefinitions.put(
-                        readDictionary.next(),
-                        readDictionary.nextLine().trim()
-                );
-            }
-        } catch (FileNotFoundException exception) {
-            exception.printStackTrace();
+    public Dictionary(Scanner scanner) throws IOException {
+        while(scanner.hasNext()){
+            wordsToDefinitions.put(
+                    scanner.next(),
+                    scanner.nextLine().trim()
+            );
         }
     }
 

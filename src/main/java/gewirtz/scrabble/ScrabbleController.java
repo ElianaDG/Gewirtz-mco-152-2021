@@ -32,8 +32,8 @@ public class ScrabbleController {
     }
 
     @FXML
-    public void initialize(){
-        for(Label label : letterLabels){
+    public void initialize() {
+        for (Label label : letterLabels) {
             label.setText(letterBag.nextLetter());
         }
     }
@@ -41,8 +41,8 @@ public class ScrabbleController {
 
     public void onAnswerClicked(javafx.scene.input.MouseEvent mouseEvent) {
         Label label = (Label) mouseEvent.getSource();
-        for( Label letter : letterLabels){
-            if(letter.getText().equals("")){
+        for (Label letter : letterLabels) {
+            if (letter.getText().equals("")) {
                 letter.setText(label.getText());
                 label.setText("");
                 break;
@@ -58,9 +58,8 @@ public class ScrabbleController {
      * returns letters from AnswerLabels to any empty letterLabels
      */
     private void returnTiles() {
-        for(Label answer : answerLabels) {
-            String answerText = answer.getText();
-            if(!answerText.isEmpty()) {
+        for (Label answer : answerLabels) {
+            if (answer.getText() != null) {
                 for (Label letter : letterLabels) {
                     if (letter.getText().equals("")) {
                         letter.setText(answer.getText());
@@ -76,33 +75,33 @@ public class ScrabbleController {
      * sets text of answerLabels to ""
      */
     private void clearTiles() {
-        for(Label answer : answerLabels) {
+        for (Label answer : answerLabels) {
             answer.setText("");
         }
     }
 
     /**
      * checks dictionary for word made from the answerLabels
+     *
      * @param actionEvent
      */
     public void onSubmit(ActionEvent actionEvent) {
         StringBuilder stringBuilder = new StringBuilder();
-        for(Label answer : answerLabels) {
+        for (Label answer : answerLabels) {
             stringBuilder.append(answer.getText());
         }
         String word = stringBuilder.toString();
 
-        if(dictionary.isInDictionary(word)){
+        if (dictionary.isInDictionary(word)) {
             calculatePoints(word);
             clearTiles();
             pointsLabel.setText(String.valueOf(points));
-            for(Label letter : letterLabels){
-                if("".equals(letter.getText())){
+            for (Label letter : letterLabels) {
+                if ("".equals(letter.getText())) {
                     letter.setText(letterBag.nextLetter());
                 }
             }
-        }
-        else{
+        } else {
             returnTiles();
             invalidWord.setText("invalid word");
         }
@@ -110,34 +109,36 @@ public class ScrabbleController {
 
     /**
      * calculates the points value according to the word length
+     *
      * @param word created with letters is evaluated for points
      */
     private void calculatePoints(String word) {
 
-        if(word.length() == 2){
+        if (word.length() == 2) {
             points += 1;
-        } else if(word.length() == 3){
+        } else if (word.length() == 3) {
             points += 3;
-        }else if(word.length() == 4){
+        } else if (word.length() == 4) {
             points += 5;
-        }else if(word.length() == 5){
+        } else if (word.length() == 5) {
             points += 7;
-        }else if(word.length() == 6){
+        } else if (word.length() == 6) {
             points += 11;
-        }else{
+        } else {
             points += 13;
         }
     }
 
     /**
      * when a letterLabel is clicked, its letter goes to the first available answerLabel
+     *
      * @param mouseEvent
      */
     public void onLetterClicked(javafx.scene.input.MouseEvent mouseEvent) {
         Label label = (Label) mouseEvent.getSource();
         String letter = label.getText();
-        for(Label answer : answerLabels){
-            if(answer.getText().equals("")){
+        for (Label answer : answerLabels) {
+            if (answer.getText().equals("")) {
                 answer.setText(letter);
                 break;
             }

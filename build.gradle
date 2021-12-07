@@ -1,12 +1,14 @@
 plugins {
     id 'org.openjfx.javafxplugin' version '0.0.9'
+    id 'java'
+    id 'war'
 }
 
 apply plugin: 'java'
 apply plugin: 'application'
 
-// This is the class with the main to run when the application starts.
-mainClassName = 'gewirtz.scrabble.ScrabbleApplication'
+group 'org.example'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -25,7 +27,11 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    implementation 'com.google.code.gson:gson:2.8.9'
     testImplementation "junit:junit:4.12"
+    compileOnly 'javax.servlet:servlet-api:2.5'
     testImplementation "org.mockito:mockito-core:3.8.0"
     testImplementation "org.mockito:mockito-inline:3.8.0"
+    testImplementation 'javax.servlet:servlet-api:2.5'
+    testImplementation 'org.mockito:mockito-core:2.1.0'
 }

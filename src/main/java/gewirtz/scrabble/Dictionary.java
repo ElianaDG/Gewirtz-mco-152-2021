@@ -12,20 +12,12 @@ public class Dictionary {
 
     private final Map<String, String> wordsToDefinitions = new HashMap<>();
 
-    public Dictionary(BufferedReader reader) throws IOException {
-        String line = reader.readLine();
-        while(line != null){
-            String nextLine = reader.readLine();
-            if (nextLine == null)
-            {
-                break;
-            }
-            String[] splitLine = nextLine.split(" ", 2);
-            if (splitLine.length < 2)
-            {
-                continue;
-            }
-            wordsToDefinitions.put(splitLine[0], splitLine[1]);
+    public Dictionary(Scanner scanner) throws IOException {
+        while(scanner.hasNext()){
+            wordsToDefinitions.put(
+                    scanner.next(),
+                    scanner.nextLine().trim()
+            );
         }
     }
 
